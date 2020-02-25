@@ -1,0 +1,17 @@
+.wrap {
+    grid-area: nav;
+    background-color: chartreuse;
+    text-decoration: none;
+}
+a {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+li {
+    list-style-type: none;
+}
+
+.active {
+    color: black;
+}

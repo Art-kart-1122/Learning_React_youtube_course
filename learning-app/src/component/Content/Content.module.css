@@ -1,0 +1,33 @@
+.wrap {
+    grid-area: content;
+    background-color: coral;
+    min-height: 500px;
+}
+
+.wrapInfo {
+    display: grid;
+    grid-template-areas:
+            "ava info";
+    grid-template-columns: 1fr 1fr ;
+}
+
+.ava {
+    grid-area: ava;
+}
+
+.info {
+    grid-area: info;
+}
+
+.addPost {
+
+}
+
+.myPosts {
+
+}
+
+.ava img {
+    width: 100px;
+    height: 100px;
+}

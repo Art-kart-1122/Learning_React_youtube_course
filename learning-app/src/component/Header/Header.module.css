@@ -1,0 +1,8 @@
+.wrap {
+    grid-area: header;
+    background-color: blue;
+}
+.logo {
+    height: 50px;
+    width: 50px;
+}
