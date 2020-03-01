@@ -15,11 +15,12 @@ const App = (props) => {
         <div className={style.wrap}>
             <Header/>
             <Navbar/>
-            <Route path='/profile' render={() =>
-                <ContentContainer store={props.store} />
+            <Route path='/profile' render={ () =>
+                <ContentContainer/>
             }/>
-            <Route path='/dialog' render={() =>
-                <DialogsContainer store={props.store}/* dispatch={props.dispatch}*//>}/>
+            <Route path='/dialog' render={ () =>
+                <DialogsContainer/>
+            }/>
             <Footer/>
         </div>
     );
