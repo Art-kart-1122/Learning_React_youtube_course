@@ -2,6 +2,7 @@ import React from "react";
 import style from './Content.module.css'
 import userpic from "../../public/images/userpic.jpeg";
 import Post from "./Post/Post";
+import {addPostActionCreater, updatePostActionCreator} from "../../redux/store";
 
 
 const Content = (props) => {
@@ -9,9 +10,12 @@ const Content = (props) => {
 
     const addPost = () => {
         const text = clickAddPost.current.value;
-        debugger;
-        props.addStore(text);
-        alert(text);
+        props.addPost(text)
+    }
+
+    const updateNewPostChange = () => {
+        const text = clickAddPost.current.value;
+        props.updateNewPostChange(text);
     }
 
     return (
@@ -28,15 +32,16 @@ const Content = (props) => {
             </div>
             <div className={style.addPost}>
                 <div className={style.add}>
-                    <form action="">
-                        <input type="textarea" ref={clickAddPost}/>
+
+                        <input onChange={updateNewPostChange} value={props.newPost} type="textarea" ref={clickAddPost}/>
                         <input type="submit" onClick={addPost}/>
-                    </form>
+
                 </div>
             </div>
             <div className={style.myPosts}>
-                <Post info="MyFirst post" date="34.89.3234"/>
-                <Post/>
+                {props.posts.map((item) => {
+                    return <Post info={item.info}/>
+                })}
             </div>
         </div>
     );

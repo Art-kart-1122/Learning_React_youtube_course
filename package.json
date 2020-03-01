@@ -1,0 +1,23 @@
+{
+  "name": "learning_react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Art-kart-1122/Lerning_React_youtube_course.git"
+  },
+  "author": "Arthur Borbela",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Art-kart-1122/Lerning_React_youtube_course/issues"
+  },
+  "homepage": "https://github.com/Art-kart-1122/Lerning_React_youtube_course#readme",
+  "dependencies": {
+    "npx": "^10.2.2",
+    "redux": "^4.0.5"
+  }
+}

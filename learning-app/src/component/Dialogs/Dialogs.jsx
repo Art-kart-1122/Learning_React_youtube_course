@@ -3,18 +3,30 @@ import style from './Dialogs.module.css'
 import {NavLink} from "react-router-dom";
 import UserItem from "./UserItem/UserItem";
 import Message from "./Message/Message";
+import {addMessageActionCreator, updateMessageActionCreator} from "../../redux/store";
 
 const Dialogs = (props) => {
 
-    const listUser = props.store.users.map(
+    const listUser = props.users.map(
         (item) => {
            return <UserItem name={item.name} id={item.id}/>
         });
 
-    const messages = props.store.messages.map(
+    const messages = props.messages.map(
         (item) => {
             return <Message info={item.info}/>
         });
+
+    const ref = React.createRef();
+
+    const updateMessage = () => {
+        let text = ref.current.value;
+        props.updateMessage(text);
+    }
+
+    const addMessage = () => {
+        props.addMessage();
+    }
 
     return (
         <div className={style.wrap}>
@@ -23,6 +35,8 @@ const Dialogs = (props) => {
             </div>
             <div className={style.textMessages}>
                 {messages}
+                <input type="text" onChange={updateMessage} ref={ref} value={props.newMessage}/>
+                <input type="submit"onClick={addMessage}/>
             </div>
         </div>
     );
