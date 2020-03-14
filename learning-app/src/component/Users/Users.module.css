@@ -1,0 +1,32 @@
+
+
+.wrap {
+    display: flex;
+    background-color: antiquewhite;
+    margin-bottom: 30px;
+    border: solid black 2px ;
+}
+
+.img img {
+    width: 150px;
+    height: 100px;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+
+.fullName, .location, .status {
+    margin-right: 100px;
+    margin-left: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.paginationList {
+    display: flex;
+}
+
+.currentPageItem {
+    font-weight: bold;
+}

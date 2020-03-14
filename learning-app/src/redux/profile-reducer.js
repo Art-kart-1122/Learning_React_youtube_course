@@ -1,3 +1,7 @@
+import * as axios from "axios";
+import {setProfileActionCreator} from "./fullProfile-reducer";
+import {setIsFetchingActionCreator} from "./fetching-reducer";
+
 const ADD_POST = "ADD-POST";
 const UPDATE_POST = "UPDATE-POST";
 
@@ -16,16 +20,31 @@ const profileReducer = (state = initalState, action) => {
             const post = {
                 info: state.newPost
             }
-            state.posts.push(post);
-            state.newPost = "Arturka React";
-            return state;
+            return {
+                ...state,
+                posts: [...state.posts, post],
+                newPost: "REACT"
+            }
         }
         case UPDATE_POST: {
-            state.newPost = action.info;
-            return state
+            return {
+                ...state,
+                newPost: action.info
+            }
         }
         default: return state;
     }
 }
+export const addPostActionCreater = () => ({type: "ADD-POST"})
+export const updatePostActionCreator = (text) => ({type: "UPDATE-POST", info: text })
+
+export const getUsers = (dispatch) => {
+    dispatch(setIsFetchingActionCreator(true));
+    axios.get(`/profile/fullProfile?id=${this.props.match.params.userId}`).then(response => {
+        dispatch(setProfileActionCreator(response.data.profile));
+        dispatch(setIsFetchingActionCreator(false));
+    })
+}
+
 
 export  default profileReducer;

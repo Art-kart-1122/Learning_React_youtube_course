@@ -1,8 +1,14 @@
 .wrap {
     grid-area: header;
     background-color: blue;
+    display: flex;
+    justify-content: space-between
 }
 .logo {
     height: 50px;
     width: 50px;
+}
+
+.userData {
+
 }

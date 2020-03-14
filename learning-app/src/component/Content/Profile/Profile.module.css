@@ -1,0 +1,19 @@
+.wrapInfo {
+    display: grid;
+    grid-template-areas:
+            "ava info";
+    grid-template-columns: 1fr 1fr ;
+}
+
+.ava {
+    grid-area: ava;
+}
+
+.info {
+    grid-area: info;
+}
+
+.ava img {
+    width: 100px;
+    height: 100px;
+}

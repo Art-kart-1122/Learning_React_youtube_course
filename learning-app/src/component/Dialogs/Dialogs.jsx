@@ -7,12 +7,12 @@ import {addMessageActionCreator, updateMessageActionCreator} from "../../redux/s
 
 const Dialogs = (props) => {
 
-    const listUser = props.users.map(
+    const listUser = props.dialogsPage.users.map(
         (item) => {
            return <UserItem name={item.name} id={item.id}/>
         });
 
-    const messages = props.messages.map(
+    const messages = props.dialogsPage.messages.map(
         (item) => {
             return <Message info={item.info}/>
         });
@@ -35,7 +35,7 @@ const Dialogs = (props) => {
             </div>
             <div className={style.textMessages}>
                 {messages}
-                <input type="text" onChange={updateMessage} ref={ref} value={props.newMessage}/>
+                <input type="text" onChange={updateMessage} ref={ref} value={props.dialogsPage.newMessage}/>
                 <input type="submit"onClick={addMessage}/>
             </div>
         </div>
