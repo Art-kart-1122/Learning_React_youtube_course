@@ -3,11 +3,16 @@ import style from './Header.module.css'
 import logo from "../../public/images/logo192.png";
 
 const Header = (props) => {
+    const logout = () => {
+        props.logout();
+    }
     return (
         <header className={style.wrap}>
             <img className={style.logo} src={logo} alt="logo"/>
             <div className={style.userData}>
-                {props.userData.isAuth ? props.userData.fullName : 'login'}
+                {props.userData.isAuth ?
+                    <div>{props.userData.fullName} <button onClick={logout}>logout</button></div>
+                    : 'login'}
             </div>
         </header>
 

@@ -18,7 +18,7 @@ const profileReducer = (state = initalState, action) => {
     switch(action.type) {
         case ADD_POST: {
             const post = {
-                info: state.newPost
+                info: action.newPost
             }
             return {
                 ...state,
@@ -26,17 +26,10 @@ const profileReducer = (state = initalState, action) => {
                 newPost: "REACT"
             }
         }
-        case UPDATE_POST: {
-            return {
-                ...state,
-                newPost: action.info
-            }
-        }
         default: return state;
     }
 }
-export const addPostActionCreater = () => ({type: "ADD-POST"})
-export const updatePostActionCreator = (text) => ({type: "UPDATE-POST", info: text })
+export const addPostActionCreator = (text) => ({type: "ADD-POST", newPost: text})
 
 export const getUsers = (dispatch) => {
     dispatch(setIsFetchingActionCreator(true));

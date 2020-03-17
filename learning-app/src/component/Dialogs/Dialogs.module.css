@@ -1,5 +1,5 @@
 .wrap {
-    background-color:orange;
+    background-color: aliceblue;
     grid-area: content;
     min-height: 500px;
     display: flex;

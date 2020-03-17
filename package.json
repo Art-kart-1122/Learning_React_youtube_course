@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/Art-kart-1122/Lerning_React_youtube_course#readme",
   "dependencies": {
+    "body-parser": "latest",
+    "express": "latest",
     "npx": "^10.2.2",
-    "redux": "^4.0.5"
+    "url": "^0.11.0"
   }
 }

@@ -4,10 +4,12 @@ import Profile from "./Profile";
 
 import fullProfileReducer, {
     getFullProfileThunkCreator,
-    setProfileActionCreator
+    setProfileActionCreator, updateProfileStatusThunkCreator
 } from "../../../redux/fullProfile-reducer";
 
 import {withRouter} from 'react-router-dom'
+import {withAuthRedirect} from "../../../HOC/withAuthRedirect";
+import {compose} from "redux";
 
 
 class ProfileContainer extends React.Component {
@@ -44,10 +46,15 @@ const mapDispatchToProps = (dispatch) => {
         },*/
         getFullProfile: (userId) => {
             dispatch(getFullProfileThunkCreator(userId));
+        },
+        updateProfileStatus: (userId, newStatus) => {
+            dispatch(updateProfileStatusThunkCreator(userId, newStatus))
         }
     }
 }
 
-const ProfileContainerWithRouter = withRouter(ProfileContainer);
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainerWithRouter);
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    withRouter,
+    withAuthRedirect)(ProfileContainer)

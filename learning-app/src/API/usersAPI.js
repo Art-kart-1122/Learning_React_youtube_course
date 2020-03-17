@@ -1,9 +1,14 @@
 import * as axios from "axios";
-const baseURL = '/api/users?'
+
+
+const instance = axios.create({
+    baseURL: '/api/'
+})
+
 
 export const usersAPI = {
     getUsers(currentPage, countOnPageItems) {
-        return axios.get(`${baseURL}page=${currentPage}&size=${countOnPageItems}`)
+        return instance.get(`users?page=${currentPage}&size=${countOnPageItems}`)
             .then(response => response.data);
     }
 }

@@ -4,6 +4,9 @@ import {NavLink} from "react-router-dom";
 import UserItem from "./UserItem/UserItem";
 import Message from "./Message/Message";
 import {addMessageActionCreator, updateMessageActionCreator} from "../../redux/store";
+import {Field, reduxForm} from "redux-form";
+import {maxLengthCreator, required} from "../../utils/validators/validators";
+import {Textarea} from "../FormControls/FormControls";
 
 const Dialogs = (props) => {
 
@@ -17,15 +20,10 @@ const Dialogs = (props) => {
             return <Message info={item.info}/>
         });
 
-    const ref = React.createRef();
 
-    const updateMessage = () => {
-        let text = ref.current.value;
-        props.updateMessage(text);
-    }
 
-    const addMessage = () => {
-        props.addMessage();
+    const addMessage = (text) => {
+        props.addMessage(text.newMessage);
     }
 
     return (
@@ -35,11 +33,25 @@ const Dialogs = (props) => {
             </div>
             <div className={style.textMessages}>
                 {messages}
-                <input type="text" onChange={updateMessage} ref={ref} value={props.dialogsPage.newMessage}/>
-                <input type="submit"onClick={addMessage}/>
+                <DialogsAddMessageReduxForm onSubmit={addMessage}/>
             </div>
         </div>
     );
 }
+
+const maxLength20 = maxLengthCreator(20);
+
+const DialogsAddMessageForm = (props) => {
+
+    return <form onSubmit={props.handleSubmit}>
+        <Field component={Textarea} name={"newMessage"} placeholder={"Message"} validate={[required, maxLength20]}/>
+        <button>Submit</button>
+    </form>
+
+}
+
+const DialogsAddMessageReduxForm = reduxForm({
+    form: "dialogsAddMessage"
+})(DialogsAddMessageForm)
 
 export default Dialogs;

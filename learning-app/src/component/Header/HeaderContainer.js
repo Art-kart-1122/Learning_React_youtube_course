@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./Header";
-import {getMyUserDataThunkCreator, setUserDataActionCreator} from "../../redux/auth-reducer";
+import {getMyUserDataThunkCreator, logoutThunkCreator, setUserDataActionCreator} from "../../redux/auth-reducer";
 import {connect} from "react-redux";
 import * as axios from 'axios'
 
@@ -9,7 +9,7 @@ import * as axios from 'axios'
 class HeaderContainer extends React.Component {
 
     componentDidMount() {
-        let pass = 'yes'; // dump data for backend
+        let pass = 'no'; // dump data for backend
         this.props.getMyUserData(pass);
         /*axios.get(`/userData/me?pass=yes`).then(response => {
             this.props.setUserData(response.data);
@@ -36,6 +36,9 @@ const mapDispatchToProps = (dispatch) => {
         },*/
         getMyUserData: (pass) => {
             dispatch(getMyUserDataThunkCreator(pass));
+        },
+        logout: () => {
+            dispatch(logoutThunkCreator());
         }
     }
 
